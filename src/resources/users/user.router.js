@@ -14,7 +14,7 @@ router.route('/:userId').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   const userEntity = await usersService.save(req.body);
-  res.send(User.toResponse(userEntity));
+  res.status(201).send(User.toResponse(userEntity));
 });
 
 router.route('/:userId').put(async (req, res) => {
@@ -24,7 +24,7 @@ router.route('/:userId').put(async (req, res) => {
 
 router.route('/:userId').delete(async (req, res) => {
   const message = await usersService.remove(req.params.userId);
-  res.json(message);
+  res.status(204).json(message);
 });
 
 
