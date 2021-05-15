@@ -1,6 +1,7 @@
+/* eslint-disable no-param-reassign */
 const Task =  require('./task.model')
 
-let tasks = new Array(3).fill(new Task)
+let tasks = [];
 
 const getAll = async () => tasks;
 
@@ -25,5 +26,17 @@ const remove = ({ taskId }) => {
   return { message: 'Task successfully removed.'}
 }
 
+const removeBoardTasks = (boardId) => {
+  tasks = tasks.filter(task => task.boardId !== boardId);
+}
 
-module.exports = { getAll, save, get, update, remove };
+const updateUserTasks = (userId) => {
+  tasks.forEach(task => {
+    if (task.userId === userId) {
+      task.userId = null
+    }
+  });
+}
+
+
+module.exports = { getAll, save, get, update, remove, removeBoardTasks, updateUserTasks };

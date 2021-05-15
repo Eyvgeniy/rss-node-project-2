@@ -1,20 +1,8 @@
-const User =  require('./user.model')
+const User =  require('./user.model');
+const tasksRepo = require('../tasks/task.memory.repository');
 
-function createUsers() {
-  const usersExample = []
-  for (let i = 0; i <= 30; i += 1) {
-    const user = {};
-    user.id = i.toString();
-    user.name = `name_${i}`;
-    user.login = `login_${i}`;
-    user.password = `password_${i}`;
-    usersExample.push(user);
-  }
-  return usersExample
-}
+let users = [];
 
-let users = []
-users.push(...createUsers());
 const getAll = async () => users;
 
 const save = async (userCredentials) => {
@@ -35,6 +23,7 @@ const update = (id, userCredentials) => {
 
 const remove = (id) => {
   users = users.filter(user => user.id !== id);
+  tasksRepo.updateUserTasks(id);
   return { message: 'User successfully removed.'}
 }
 

@@ -1,8 +1,7 @@
 const Board =  require('./board.model')
+const tasksRepo = require('../tasks/task.memory.repository')
 
-
-
-let boards = new Array(10).fill(new Board)
+let boards = [];
 
 const getAll = async () => boards;
 
@@ -24,6 +23,7 @@ const update = (id, boardCredentials) => {
 
 const remove = (id) => {
   boards = boards.filter(board => board.id !== id);
+  tasksRepo.removeBoardTasks(id)
   return { message: 'Board successfully removed.'}
 }
 
