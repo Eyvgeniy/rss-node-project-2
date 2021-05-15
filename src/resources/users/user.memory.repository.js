@@ -24,7 +24,7 @@ const save = async (userCredentials) => {
 }
 const get = (id) => {
   const currentUser = users.find(user => user.id === id)
-  if (currentUser === undefined) return {}
+  if (currentUser === undefined) throw new Error('User not found')
   return currentUser;
 }
 

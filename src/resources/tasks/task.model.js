@@ -5,10 +5,10 @@ class Task {
     id = uuid(),
     title = 'title',
     order = 0,
-    description,
-    userId,
-    boardId,
-    columnId,
+    description = 'description',
+    userId = null,
+    boardId = null,
+    columnId = null,
   } = {}) {
     this.id = id;
     this.title = title;

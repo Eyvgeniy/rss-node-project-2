@@ -1,16 +1,17 @@
 const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
+const wrapAsync = require('../../common/errors/async-error-wrapper');
 
-router.route('/').get(async (req, res) => {
+router.route('/').get(wrapAsync(async (req, res) => {
   const users = await usersService.getAll();
   res.json(users.map(User.toResponse));
-});
+}));
 
-router.route('/:userId').get(async (req, res) => {
+router.route('/:userId').get(wrapAsync(async (req, res) => {
   const userEntity = await usersService.get(req.params.userId);
   res.json(User.toResponse(userEntity));
-});
+}));
 
 router.route('/').post(async (req, res) => {
   const userEntity = await usersService.save(req.body);

@@ -1,9 +1,6 @@
 const Task =  require('./task.model')
 
-
-
-// const tasks = new Array(10).fill(new Task)
-let tasks = []
+let tasks = new Array(3).fill(new Task)
 
 const getAll = async () => tasks;
 
@@ -23,12 +20,10 @@ const update = (params, taskCredentials) => {
   return tasks.find(el => el.id === params.taskId);
 }
 
-const remove = (taskId) => {
-  tasks = tasks.filter(board => board.id !== taskId);
+const remove = ({ taskId }) => {
+  tasks = tasks.filter(task => task.id !== taskId);
   return { message: 'Task successfully removed.'}
 }
 
 
-module.exports = { getAll, save, get, update, remove
-  // , save, get, update, remove
- };
+module.exports = { getAll, save, get, update, remove };

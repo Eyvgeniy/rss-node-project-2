@@ -13,7 +13,7 @@ const save = async (boardCredentials) => {
 }
 const get = (id) => {
   const board = boards.find(el => el.id === id)
-  if (board === undefined) return {}
+  if (board === undefined) throw new Error('Board not found')
   return board;
 }
 
