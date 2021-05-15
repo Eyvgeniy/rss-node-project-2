@@ -8,10 +8,12 @@ router.route('/').get(async (req, res) => {
   res.json(boards.map(Board.toResponse));
 });
 
-router.route('/:boardId').get(wrapAsync(async (req, res) => {
-  const boardEntity = await boardsService.get(req.params.boardId);
-  res.json(Board.toResponse(boardEntity));
-}));
+router.route('/:boardId').get(
+  wrapAsync(async (req, res) => {
+    const boardEntity = await boardsService.get(req.params.boardId);
+    res.json(Board.toResponse(boardEntity));
+  })
+);
 
 router.route('/').post(async (req, res) => {
   const boardEntity = await boardsService.save(req.body);
@@ -27,7 +29,5 @@ router.route('/:boardId').delete(async (req, res) => {
   const message = await boardsService.remove(req.params.boardId);
   res.status(204).json(message);
 });
-
-
 
 module.exports = router;

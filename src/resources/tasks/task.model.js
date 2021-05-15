@@ -1,4 +1,4 @@
-const {v4: uuid} = require('uuid');
+const { v4: uuid } = require('uuid');
 
 class Task {
   constructor({
@@ -20,24 +20,16 @@ class Task {
   }
 
   static toResponse(task) {
-    const {
-  id,
-  title,
-  order,
-  description,
-  userId, 
-  boardId,
-  columnId
-} = task;
+    const { id, title, order, description, userId, boardId, columnId } = task;
     return {
-  id,
-  title,
-  order,
-  description,
-  userId, // assignee
-  boardId,
-  columnId
-};
+      id,
+      title,
+      order,
+      description,
+      userId, // assignee
+      boardId,
+      columnId,
+    };
   }
 }
 

@@ -1,17 +1,19 @@
 const router = require('express').Router({ mergeParams: true });
 const Task = require('./task.model');
 const tasksService = require('./task.service');
-const wrapAsync = require('../../common/errors/async-error-wrapper')
+const wrapAsync = require('../../common/errors/async-error-wrapper');
 
 router.route('/').get(async (req, res) => {
   const tasks = await tasksService.getAll();
   res.json(tasks.map(Task.toResponse));
 });
 
-router.route('/:taskId').get(wrapAsync(async (req, res) => {
-  const taskEntity = await tasksService.get(req.params.taskId);
-  res.json(Task.toResponse(taskEntity));
-}));
+router.route('/:taskId').get(
+  wrapAsync(async (req, res) => {
+    const taskEntity = await tasksService.get(req.params.taskId);
+    res.json(Task.toResponse(taskEntity));
+  })
+);
 
 router.route('/').post(async (req, res) => {
   const taskEntity = await tasksService.save(req.params.boardId, req.body);
