@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const Task = require('./task.model');
 
 let tasks = [];
@@ -35,10 +34,13 @@ const removeBoardTasks = (boardId) => {
 };
 
 const updateUserTasks = (userId) => {
-  tasks.forEach((task) => {
+  tasks = tasks.map((task) => {
     if (task.userId === userId) {
-      task.userId = null;
+      const newTask = task;
+      newTask.userId = null;
+      return newTask;
     }
+    return task;
   });
 };
 
