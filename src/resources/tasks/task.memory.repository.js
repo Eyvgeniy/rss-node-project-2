@@ -23,7 +23,7 @@ let tasks = [];
 
 /**
  * Return all tasks
- * @returns {Promise<Array<TaskModel>>}
+ * @returns {Promise<Array<Task>>}
  */
 const getAll = async () => tasks;
 
@@ -31,7 +31,7 @@ const getAll = async () => tasks;
  * Create new Task
  * @param {string} boardId Board Id
  * @param {TaskModel} taskCredentials Task
- * @returns {Promise<TaskModel>} Return new Task
+ * @returns {Promise<Task>} Return new Task
  */
 const save = async (boardId, taskCredentials) => {
   const newTask = await new Task({ ...taskCredentials, boardId });
@@ -42,7 +42,7 @@ const save = async (boardId, taskCredentials) => {
 /**
  * Returns task by Id
  * @param {string} taskId Task Id
- * @returns {TaskModel}
+ * @returns {Task}
  */
 const get = (taskId) => {
   const task = tasks.find((el) => el.id === taskId);
@@ -54,7 +54,7 @@ const get = (taskId) => {
  * Update Task
  * @param {{ taskId: string, userId: string, boardId: string}} params
  * @param {TaskModel} taskCredentials
- * @returns {TaskModel} Updated Task
+ * @returns {Task} Updated Task
  */
 const update = (params, taskCredentials) => {
   tasks = tasks.map((el) =>

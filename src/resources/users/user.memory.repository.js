@@ -23,7 +23,7 @@ let users = [];
 /**
  * Return all users
  * @async
- * @returns {Promise<Array<UserModel>>}
+ * @returns {Promise<Array<User>>}
  */
 const getAll = async () => users;
 
@@ -31,7 +31,7 @@ const getAll = async () => users;
  * Add user to db
  * @async
  * @param {UserModel} userCredentials
- * @returns {Promise<UserModel>} Returns new user
+ * @returns {Promise<User>} Returns new user
  */
 const save = async (userCredentials) => {
   const newUser = await new User(userCredentials);
@@ -43,7 +43,7 @@ const save = async (userCredentials) => {
  * Returns user by id
  * @async
  * @param {string} id - user id
- * @returns {Promise<UserModel>} returns users with id
+ * @returns {Promise<User>} returns users with id
  */
 const get = async (id) => {
   const currentUser = users.find((user) => user.id === id);
@@ -55,7 +55,7 @@ const get = async (id) => {
  * Update user`s params
  * @param {string} id - user id
  * @param {User} userCredentials - user to update
- * @returns {Promise<UserModel>} - returns updated user
+ * @returns {Promise<User>} - returns updated user
  */
 const update = async (id, userCredentials) => {
   users = users.map((user) => (user.id === id ? { ...userCredentials } : user));
