@@ -1,6 +1,15 @@
 const { v4: uuid } = require('uuid');
 
 /**
+ * User object
+ * @typedef {Object} UserModel
+ * @property {string} id - User id
+ * @property {string} name - User name
+ * @property {string} login - User login
+ * @property {string} password - User password (optional)
+ */
+
+/**
  * Class to create User object
  */
 class User {

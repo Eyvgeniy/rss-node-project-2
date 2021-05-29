@@ -4,6 +4,15 @@ const User = require('./user.model');
 const tasksRepo = require('../tasks/task.memory.repository');
 
 /**
+ * User object
+ * @typedef {Object} UserModel
+ * @property {string} id - User id
+ * @property {string} name - User name
+ * @property {string} login - User login
+ * @property {string} password - User password (optional)
+ */
+
+/**
  * Users database
  * @type {Array<UserModel>}
  */
