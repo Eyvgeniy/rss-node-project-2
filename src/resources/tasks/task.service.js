@@ -1,6 +1,11 @@
 const tasksRepo = require('./task.memory.repository');
 
 /**
+ * Tasks Services Module
+ * @module TasksServices
+ */
+
+/**
  * Task Model
  * @ignore
  * @typedef {Object} TaskModel

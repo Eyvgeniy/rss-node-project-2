@@ -2,6 +2,11 @@
 const usersRepo = require('./user.memory.repository');
 
 /**
+ * Users Services Module
+ * @module UsersService
+ */
+
+/**
  * User object
  * @ignore
  * @typedef {Object} UserModel

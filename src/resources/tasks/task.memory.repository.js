@@ -2,6 +2,11 @@
 const Task = require('./task.model');
 
 /**
+ * Tasks Repository Module
+ * @module TasksRepository
+ */
+
+/**
  * Task Model
  * @ignore
  * @typedef {Object} TaskModel
@@ -14,9 +19,6 @@ const Task = require('./task.model');
  * @property {string} columnId - User columnId *
  */
 
-/**
- * @type {Array<TaskModel>}
- */
 let tasks = [];
 
 /**

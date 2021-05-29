@@ -4,6 +4,11 @@ const User = require('./user.model');
 const tasksRepo = require('../tasks/task.memory.repository');
 
 /**
+ * Users Repository Module
+ * @module UsersRepository
+ */
+
+/**
  * User object
  * @ignore
  * @typedef {Object} UserModel
@@ -13,10 +18,6 @@ const tasksRepo = require('../tasks/task.memory.repository');
  * @property {string} password - User password (optional)
  */
 
-/**
- * Users database
- * @type {Array<UserModel>}
- */
 let users = [];
 
 /**
@@ -29,7 +30,7 @@ const getAll = async () => users;
 /**
  * Add user to db
  * @async
- * @param {User} userCredentials
+ * @param {UserModel} userCredentials
  * @returns {Promise<UserModel>} Returns new user
  */
 const save = async (userCredentials) => {

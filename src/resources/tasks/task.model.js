@@ -1,19 +1,8 @@
 const { v4: uuid } = require('uuid');
 
 /**
- * Task Model
- * @typedef {Object} TaskModel
- * @property {string} id - User id
- * @property {string} title - User title
- * @property {number} order - User order
- * @property {string} description - User description
- * @property {string} userId - User userId
- * @property {string} boardId - User boardId
- * @property {string} columnId - User columnId *
- */
-
-/**
  * Class for create Task
+ * @class
  */
 class Task {
   /**
@@ -22,31 +11,31 @@ class Task {
    */
   constructor({
     /**
-     * @param {string} id Task id
+     * @property {string} id Task id
      */
     id = uuid(),
     /**
-     * @param {string} title Task title
+     * @property {string} title Task title
      */
     title = 'title',
     /**
-     * @param {number} order Task order
+     * @property {number} order Task order
      */
     order = 0,
     /**
-     * @param {string} description Task description
+     * @property {string} description Task description
      */
     description = 'description',
     /**
-     * @param {string|null} userId Task userId
+     * @property {string|null} userId Task userId
      */
     userId = null,
     /**
-     * @param {string|null} boardId Task boardId
+     * @property {string|null} boardId Task boardId
      */
     boardId = null,
     /**
-     * @param {string|null} columnId Task columnId
+     * @property {string|null} columnId Task columnId
      */
     columnId = null,
   } = {}) {
