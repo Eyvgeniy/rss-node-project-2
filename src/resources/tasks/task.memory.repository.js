@@ -3,6 +3,7 @@ const Task = require('./task.model');
 
 /**
  * Task Model
+ * @ignore
  * @typedef {Object} TaskModel
  * @property {string} id - User id
  * @property {string} title - User title

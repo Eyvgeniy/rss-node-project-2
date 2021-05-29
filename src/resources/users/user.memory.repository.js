@@ -5,6 +5,7 @@ const tasksRepo = require('../tasks/task.memory.repository');
 
 /**
  * User object
+ * @ignore
  * @typedef {Object} UserModel
  * @property {string} id - User id
  * @property {string} name - User name

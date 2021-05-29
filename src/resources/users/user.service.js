@@ -3,6 +3,7 @@ const usersRepo = require('./user.memory.repository');
 
 /**
  * User object
+ * @ignore
  * @typedef {Object} UserModel
  * @property {string} id - User id
  * @property {string} name - User name
