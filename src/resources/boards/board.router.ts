@@ -32,4 +32,4 @@ router.route('/:boardId').delete(async (req, res) => {
   res.status(204).json(message);
 });
 
-module.exports = router;
+export default router;
