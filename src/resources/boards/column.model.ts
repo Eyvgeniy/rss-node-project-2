@@ -1,9 +1,14 @@
 // @ts-check
-const { v4: uuid } = require('uuid');
+import { v4 as uuid } from 'uuid';
+import { IColumn } from '../../models/ColumnModel';
 
-class Column {
+export default class Column {
+  id: string;
+  title: string;
+  order: number;
+
   constructor(
-    params = {
+    params: IColumn = {
       id: uuid(),
       title: 'title',
       order: 0,
@@ -14,10 +19,8 @@ class Column {
     this.order = params.order;
   }
 
-  static toResponse(column) {
+  static toResponse(column: Column): IColumn {
     const { id, title, order } = column;
     return { id, title, order };
   }
 }
-
-module.exports = Column;
