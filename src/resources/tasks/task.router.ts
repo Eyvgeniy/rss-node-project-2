@@ -1,9 +1,11 @@
-const router = require('express').Router({ mergeParams: true });
-const Task = require('./task.model');
-const tasksService = require('./task.service');
-const wrapAsync = require('../../common/errors/async-error-wrapper');
+import express from 'express';
+import Task from './task.model';
+import tasksService from './task.service';
+import wrapAsync from '../../common/errors/async-error-wrapper';
 
-router.route('/').get(async (req, res) => {
+const router = express.Router({ mergeParams: true });
+
+router.route('/').get(async (_, res) => {
   const tasks = await tasksService.getAll();
   res.json(tasks.map(Task.toResponse));
 });
@@ -30,4 +32,4 @@ router.route('/:taskId').delete(async (req, res) => {
   res.status(204).json(message);
 });
 
-module.exports = router;
+export default router;
