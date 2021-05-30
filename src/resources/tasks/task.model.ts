@@ -10,24 +10,22 @@ export default class Task {
   boardId: string | null;
   columnId: string | null;
 
-  constructor(
-    params: ITask = {
-      id: uuid(),
-      title: 'title',
-      order: 0,
-      description: 'description',
-      userId: null,
-      boardId: null,
-      columnId: null,
-    }
-  ) {
-    this.id = params.id;
-    this.title = params.title;
-    this.order = params.order;
-    this.description = params.description;
-    this.userId = params.userId;
-    this.boardId = params.boardId;
-    this.columnId = params.columnId;
+  constructor({
+    id = uuid(),
+    title = 'title',
+    order = 0,
+    description = 'description',
+    userId = null,
+    boardId = null,
+    columnId = null,
+  }: ITask) {
+    this.id = id;
+    this.title = title;
+    this.order = order;
+    this.description = description;
+    this.userId = userId;
+    this.boardId = boardId;
+    this.columnId = columnId;
   }
 
   static toResponse(task: ITask): ITask {

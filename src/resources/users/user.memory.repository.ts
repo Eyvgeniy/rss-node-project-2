@@ -2,7 +2,7 @@
 
 import User from './user.model';
 import { IUser } from '../../models/UserModel';
-// import tasksRepo from '../tasks/task.memory.repository';
+import tasksRepo from '../tasks/task.memory.repository';
 
 interface IMessage {
   message: string;
@@ -24,14 +24,16 @@ const get = async (id: string): Promise<User> => {
   return currentUser;
 };
 
-const update = async (id: string, userCredentials: IUser): Promise<User> => {
-  users = users.map((user) => (user.id === id ? { ...userCredentials } : user));
+const update = async (id: string, userCredentials: IUser): Promise<IUser> => {
+  users = users.map((user) =>
+    user.id === id ? new User(userCredentials) : user
+  );
   return userCredentials;
 };
 
 const remove = async (id: string): Promise<IMessage> => {
   users = users.filter((user) => user.id !== id);
-  // tasksRepo.updateUserTasks(id);
+  tasksRepo.updateUserTasks(id);
   return { message: 'User successfully removed.' };
 };
 

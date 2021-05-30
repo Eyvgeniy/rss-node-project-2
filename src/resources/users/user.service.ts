@@ -14,7 +14,7 @@ const save = (userCredentials: IUser): Promise<User> =>
 
 const get = (id: string): Promise<User> => usersRepo.get(id);
 
-const update = (id: string, userCredentials: IUser): Promise<User> =>
+const update = (id: string, userCredentials: IUser): Promise<IUser> =>
   usersRepo.update(id, userCredentials);
 
 const remove = (id: string): Promise<IMessage> => usersRepo.remove(id);
