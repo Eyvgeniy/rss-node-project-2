@@ -3,8 +3,8 @@ import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
 import userRouter from './resources/users/user.router';
-// import boardRouter from './resources/boards/board.router'
-// import taskRouter from './resources/tasks/task.router';
+import boardRouter from './resources/boards/board.router';
+import taskRouter from './resources/tasks/task.router';
 import errorMiddleware from './middlewares/error-middleware';
 
 const app = express();
@@ -23,8 +23,8 @@ app.use('/', (req, res, next) => {
 });
 
 app.use('/users', userRouter);
-// app.use('/boards', boardRouter);
-// boardRouter.use('/:boardId/tasks', taskRouter);
+app.use('/boards', boardRouter);
+boardRouter.use('/:boardId/tasks', taskRouter);
 app.use(errorMiddleware);
 
 export default app;
