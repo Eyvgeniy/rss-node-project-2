@@ -24,11 +24,11 @@ const get = async (id: string): Promise<User> => {
   return currentUser;
 };
 
-const update = async (id: string, userCredentials: IUser): Promise<IUser> => {
+const update = async (id: string, userCredentials: IUser): Promise<User> => {
   users = users.map((user) =>
     user.id === id ? new User(userCredentials) : user
   );
-  return userCredentials;
+  return new User(userCredentials);
 };
 
 const remove = async (id: string): Promise<IMessage> => {

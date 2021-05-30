@@ -7,16 +7,10 @@ export default class Column {
   title: string;
   order: number;
 
-  constructor(
-    params: IColumn = {
-      id: uuid(),
-      title: 'title',
-      order: 0,
-    }
-  ) {
-    this.id = params.id;
-    this.title = params.title;
-    this.order = params.order;
+  constructor({ id = uuid(), title = 'title', order = 0 }: IColumn) {
+    this.id = id;
+    this.title = title;
+    this.order = order;
   }
 
   static toResponse(column: Column): IColumn {

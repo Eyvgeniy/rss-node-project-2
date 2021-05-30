@@ -12,7 +12,7 @@ export default class Board {
   constructor({
     id = uuid(),
     title = 'title',
-    columns = [new Column()],
+    columns = [new Column({})],
   }: IBoard) {
     this.id = id;
     this.title = title;
