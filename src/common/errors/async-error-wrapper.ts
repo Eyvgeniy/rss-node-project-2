@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 
 interface RequestParams {
   userId: string;
+  boardId: string;
+  taskId: string;
 }
 
 export default (
