@@ -1,7 +1,7 @@
 // @ts-check
 import Task from './task.model';
 import { ITask } from '../../models/TaskModel';
-import Errors from '../../common/errors/errors-list';
+import { NotFoundError } from '../../common/errors/errors-list';
 
 let tasks = [] as Task[];
 
@@ -15,7 +15,7 @@ const save = async (boardId: string, taskCredentials: ITask): Promise<Task> => {
 
 const get = (taskId: string): Task => {
   const task = tasks.find((el) => el.id === taskId);
-  if (task === undefined) throw new Errors.NotFoundError('Task');
+  if (task === undefined) throw new NotFoundError('Task');
   return task;
 };
 

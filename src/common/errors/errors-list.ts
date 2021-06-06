@@ -24,4 +24,4 @@ class InternalServerError extends Error {
   }
 }
 
-export default { NotFoundError, InternalServerError };
+export { NotFoundError, InternalServerError };

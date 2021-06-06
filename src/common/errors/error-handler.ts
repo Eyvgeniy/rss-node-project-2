@@ -1,8 +1,6 @@
 import logger from '../logger/logger';
-import Errors from './errors-list';
+import { InternalServerError } from './errors-list';
 import { IUserError } from '../../models';
-
-const { InternalServerError } = Errors;
 
 const errorHandler = (
   err: IUserError

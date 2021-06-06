@@ -1,7 +1,7 @@
 import Board from './board.model';
 import { IBoard } from '../../models/BoardModel';
 import tasksRepo from '../tasks/task.memory.repository';
-import Errors from '../../common/errors/errors-list';
+import { NotFoundError } from '../../common/errors/errors-list';
 
 let boards = [] as Board[];
 
@@ -15,7 +15,7 @@ const save = async (boardCredentials: IBoard): Promise<Board> => {
 
 const get = (id: string): Board => {
   const board = boards.find((el) => el.id === id);
-  if (board === undefined) throw new Errors.NotFoundError('Board');
+  if (board === undefined) throw new NotFoundError('Board');
   return board;
 };
 
