@@ -1,9 +1,11 @@
-const router = require('express').Router();
-const Board = require('./board.model');
-const boardsService = require('./board.service');
-const wrapAsync = require('../../common/errors/async-error-wrapper');
+import express from 'express';
+import Board from './board.model';
+import boardsService from './board.service';
+import wrapAsync from '../../common/errors/async-error-wrapper';
 
-router.route('/').get(async (req, res) => {
+const router = express.Router();
+
+router.route('/').get(async (_, res) => {
   const boards = await boardsService.getAll();
   res.json(boards.map(Board.toResponse));
 });
@@ -30,4 +32,4 @@ router.route('/:boardId').delete(async (req, res) => {
   res.status(204).json(message);
 });
 
-module.exports = router;
+export default router;

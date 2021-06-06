@@ -1,6 +1,15 @@
-const { v4: uuid } = require('uuid');
+import { v4 as uuid } from 'uuid';
+import { ITask } from '../../models/TaskModel';
 
-class Task {
+export default class Task {
+  id: string;
+  title: string;
+  order: number;
+  description: string;
+  userId: string | null;
+  boardId: string | null;
+  columnId: string | null;
+
   constructor({
     id = uuid(),
     title = 'title',
@@ -9,7 +18,7 @@ class Task {
     userId = null,
     boardId = null,
     columnId = null,
-  } = {}) {
+  }: ITask) {
     this.id = id;
     this.title = title;
     this.order = order;
@@ -19,7 +28,7 @@ class Task {
     this.columnId = columnId;
   }
 
-  static toResponse(task) {
+  static toResponse(task: ITask): ITask {
     const { id, title, order, description, userId, boardId, columnId } = task;
     return {
       id,
@@ -32,5 +41,3 @@ class Task {
     };
   }
 }
-
-module.exports = Task;

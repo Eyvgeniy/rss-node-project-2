@@ -1,4 +1,4 @@
-# RS School REST service
+# RS School REST service (using Typescript)
 
 ## Prerequisites
 
@@ -15,6 +15,12 @@ git clone {repository URL}
 
 ```
 npm install
+```
+
+### Build application
+
+```
+npm run build
 ```
 
 ## Running application
