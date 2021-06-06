@@ -9,6 +9,9 @@ import taskRouter from './resources/tasks/task.router';
 
 import errorMiddleware from './middlewares/error-middleware';
 import loggerReqMiddleware from './middlewares/request-logger';
+import logger from './common/logger/logger';
+
+import { UserError } from './models/UserError';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -30,5 +33,14 @@ app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 boardRouter.use('/:boardId/tasks', taskRouter);
 app.use(errorMiddleware);
+
+process.on('uncaughtException', (error: UserError): void => {
+  logger.error(error.stack);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (error: UserError) => {
+  logger.error(error.stack);
+});
 
 export default app;

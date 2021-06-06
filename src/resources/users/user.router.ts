@@ -17,7 +17,6 @@ router.route('/').get(
 router.route('/:userId').get(
   wrapAsync(
     async (req, res): Promise<void> => {
-      throw new Error('Oops');
       const userEntity = await usersService.get(req.params.userId);
       res.json(User.toResponse(userEntity));
     }
