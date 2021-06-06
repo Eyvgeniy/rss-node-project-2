@@ -8,8 +8,8 @@ const info = (
   console.log(`${method} ${url} ${query} ${statusCode} [${ms}ms]`);
 };
 
-const error = (status: string, reason: string, statusText: string): void => {
-  console.error(`Error ${reason} ${statusText} ${status}`);
+const error = (stack: string): void => {
+  console.error(`${stack}`);
 };
 
 export default { info, error };
