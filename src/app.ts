@@ -11,7 +11,7 @@ import errorMiddleware from './middlewares/error-middleware';
 import loggerReqMiddleware from './middlewares/request-logger';
 import logger from './common/logger/logger';
 
-import { UserError } from './models/UserError';
+import { IUserError } from './models';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -34,12 +34,12 @@ app.use('/boards', boardRouter);
 boardRouter.use('/:boardId/tasks', taskRouter);
 app.use(errorMiddleware);
 
-process.on('uncaughtException', (error: UserError): void => {
+process.on('uncaughtException', (error: IUserError): void => {
   logger.error(error.stack);
   process.exit(1);
 });
 
-process.on('unhandledRejection', (error: UserError) => {
+process.on('unhandledRejection', (error: IUserError) => {
   logger.error(error.stack);
 });
 

@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import errorHandler from '../common/errors/error-handler';
-import { UserError } from '../models/UserError';
+import { IUserError } from '../models';
 
 const errorMiddleware = (
-  err: UserError,
+  err: IUserError,
   _: Request,
   res: Response,
   next: NextFunction
