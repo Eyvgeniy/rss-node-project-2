@@ -7,7 +7,7 @@ const loggerMiddleware = (
   res: Response,
   next: NextFunction
 ): void => {
-  const { method, url, query } = req;
+  const { method, url, query, body } = req;
   const start = Date.now();
 
   next();
@@ -16,7 +16,7 @@ const loggerMiddleware = (
     const ms = Date.now() - start;
     const { statusCode } = res;
     const querytoString = JSON.stringify(query);
-    logger.info(method, url, querytoString, statusCode, ms);
+    logger.info(method, url, querytoString, statusCode, ms, body);
   });
 };
 
