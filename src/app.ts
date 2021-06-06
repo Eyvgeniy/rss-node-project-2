@@ -41,6 +41,7 @@ process.on('uncaughtException', (error: IUserError): void => {
 
 process.on('unhandledRejection', (error: IUserError) => {
   logger.error(error.stack);
+  process.exit(1);
 });
 
 export default app;
