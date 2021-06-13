@@ -11,6 +11,10 @@ export default {
   MONGO_CONNECTION_STRING: process.env['MONGO_CONNECTION_STRING'],
   JWT_SECRET_KEY: process.env['JWT_SECRET_KEY'],
   AUTH_MODE: process.env['AUTH_MODE'] === 'true',
-  REQUEST_LOGS: 'request-logs.log',
-  ERRORS_LOGS: 'errors-logs.log',
+  REQUEST_LOGS: 'logs/request-logs.log',
+  ERRORS_LOGS: 'logs/errors-logs.log',
+  POSTGRES_USER: process.env['POSTGRES_USER'],
+  POSTGRES_PASSWORD: process.env['POSTGRES_PASSWORD'],
+  POSTGRES_PORT: process.env['POSTGRES_PORT'],
+  POSTGRES_HOST: process.env['POSTGRES_HOST'],
 };
