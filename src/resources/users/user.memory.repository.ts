@@ -3,6 +3,7 @@
 import User from './user.model';
 import { IUser } from '../../models/UserModel';
 import tasksRepo from '../tasks/task.memory.repository';
+import { NotFoundError } from '../../common/errors/errors-list';
 
 interface IMessage {
   message: string;
@@ -20,7 +21,7 @@ const save = async (userCredentials: IUser): Promise<User> => {
 
 const get = async (id: string): Promise<User> => {
   const currentUser = users.find((user) => user.id === id);
-  if (currentUser === undefined) throw new Error('User not found');
+  if (currentUser === undefined) throw new NotFoundError('User');
   return currentUser;
 };
 

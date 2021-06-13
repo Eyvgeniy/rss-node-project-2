@@ -1,12 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
+import errorHandler from '../common/errors/error-handler';
+import { IUserError } from '../models';
 
 const errorMiddleware = (
-  err: Error,
+  err: IUserError,
   _: Request,
   res: Response,
   next: NextFunction
 ): void => {
-  res.status(404).send(err.message);
+  const { reason, statusText, status } = errorHandler(err);
+  res.status(status).send({ reason, statusText });
   next();
 };
 
